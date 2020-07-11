@@ -1,17 +1,11 @@
 extends KinematicBody2D
 
-tool
-
 export(int) var distance = 10.0 setget setdist, getdist
-export(int, "H", "V") var mode = 0 setget setmode, getmode
+
 
 #Platform speed
 const speed = 30.0
 var vel = Vector2(0.0, 0.0)
-
-#Mode 
-const H = 0
-const V = 1
 
 #Editor auxiliar variables
 var startline = null
@@ -23,11 +17,7 @@ var direction = 1
 func setdist(new_value):
 	distance = new_value
 	
-	if mode == H:
-		endline = Vector2(distance, 0)
-	elif mode == V:
-		endline = Vector2(0, distance)
-		
+	endline = Vector2(distance, 0)
 	print(position, endline)
 	
 	update()
@@ -35,38 +25,24 @@ func setdist(new_value):
 func getdist():
 	return distance
 
-func setmode(new_value):
-	mode = new_value
-	update()
-
-func getmode():
-	return mode
-
-
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	startline = position
+	$AnimationPlayer.play("walk")
 	set_process(not Engine.editor_hint)
 
 #Move the platform when in-game
 func _process(delta):
 	
-	if mode == H:
-		vel.x = speed * direction
-		if direction == 1 and position.x >= startline.x + endline.x:
-			direction = -1
-		elif direction == -1 and position.x <= startline.x:
-			direction = +1
-	else:
-		vel.y = speed * direction
-		if direction == 1 and position.y >= startline.y + endline.x:
-			direction = -1
-		elif direction == -1 and position.y <= startline.x:
-			direction = +1
+	vel.x = speed * direction
+	if direction == 1 and position.x >=  startline.x + endline.x:
+		direction = -1
+		$Sprite.flip_h = true
+	elif direction == -1 and position.x <= startline.x:
+		direction = +1
+		$Sprite.flip_h = false
 	
-	move_and_collide(vel * delta)
+	move_and_slide(vel)
 
 #Update a line in editor
 func _draw():

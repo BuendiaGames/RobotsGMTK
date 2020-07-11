@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://graphics/robots.png" type="Texture" id=1]
+[ext_resource path="res://core/robotnpc.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6.42238, 4.89881 )
@@ -40,6 +41,7 @@ tracks/0/keys = {
 }
 
 [node name="robotnpc" type="KinematicBody2D"]
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.297302, 5.64873 )
@@ -48,7 +50,7 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 region_enabled = true
-region_rect = Rect2( 289, 176, 16, 32 )
+region_rect = Rect2( 209, 176, 16, 32 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 2 )
