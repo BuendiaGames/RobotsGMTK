@@ -139,3 +139,9 @@ func _on_Area2D_area_exited(area):
 	currobj = null
 	pass # Replace with function body.
 
+
+
+func _on_Area2D_body_entered(body):
+	if "npc" in body.name:
+		print("muerto")
+	pass # Replace with function body.

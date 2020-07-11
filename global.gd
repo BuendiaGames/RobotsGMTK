@@ -16,7 +16,7 @@ func load_next_level():
 	if level_index > last_level:
 		pass #FINISH
 	else:
-		goto_scene("res://levels/level-" + str(level_index+1))
+		goto_scene("res://levels/level-" + str(level_index) + ".tscn")
 
 #Call the load to other scene when possible
 func goto_scene(path):
