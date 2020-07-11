@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://graphics/robots.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6.42238, 4.89881 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 209, 176, 16, 32 ), Rect2( 225, 176, 16, 32 ), Rect2( 241, 176, 16, 32 ), Rect2( 225, 176, 16, 32 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "walk"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 289, 176, 16, 32 ), Rect2( 305, 176, 16, 32 ), Rect2( 321, 176, 16, 32 ), Rect2( 337, 176, 16, 32 ), Rect2( 353, 176, 16, 32 ), Rect2( 369, 176, 16, 32 ), Rect2( 385, 176, 16, 32 ), Rect2( 401, 176, 16, 32 ) ]
+}
+
+[node name="robotnpc" type="KinematicBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.297302, 5.64873 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 289, 176, 16, 32 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 2 )
+anims/walk = SubResource( 3 )

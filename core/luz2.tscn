@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://graphics/robots.png" type="Texture" id=1]
+[ext_resource path="res://luz2.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=2]
+resource_name = "azul"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Rect2( 32, 96, 16, 32 ), Rect2( 48, 96, 16, 32 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "roja"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Rect2( 32, 96, 16, 32 ), Rect2( 64, 96, 16, 32 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.98726, 16.3567 )
+
+[node name="luz2" type="StaticBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 32, 96, 16, 32 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/azul = SubResource( 2 )
+anims/roja = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
