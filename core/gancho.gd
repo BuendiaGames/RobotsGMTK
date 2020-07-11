@@ -66,4 +66,4 @@ func _process(delta):
 
 func _on_gancho_timeout():
 	get_node("../fadeout").fadeout()
-	#Cambiar escena
+	global.load_next_level()
