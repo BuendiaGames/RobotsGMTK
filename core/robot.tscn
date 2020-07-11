@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://core/robot.gd" type="Script" id=1]
 [ext_resource path="res://graphics/robots.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "idle"
 length = 0.8
 loop = true
@@ -17,10 +17,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 208, 240, 16, 32 ), Rect2( 224, 240, 16, 32 ), Rect2( 240, 240, 16, 32 ), Rect2( 256, 240, 16, 32 ) ]
+"values": [ Rect2( 210, 240, 16, 32 ), Rect2( 226, 240, 16, 32 ), Rect2( 242, 240, 16, 32 ), Rect2( 258, 240, 16, 32 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "walk"
 length = 1.6
 loop = true
@@ -34,10 +34,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Rect2( 288, 240, 16, 32 ), Rect2( 304, 240, 16, 32 ), Rect2( 320, 240, 16, 32 ), Rect2( 336, 240, 16, 32 ), Rect2( 352, 240, 16, 32 ), Rect2( 368, 240, 16, 32 ), Rect2( 384, 240, 16, 32 ), Rect2( 400, 240, 16, 32 ) ]
+"values": [ Rect2( 290, 240, 16, 32 ), Rect2( 306, 240, 16, 32 ), Rect2( 322, 240, 16, 32 ), Rect2( 338, 240, 16, 32 ), Rect2( 354, 240, 16, 32 ), Rect2( 370, 240, 16, 32 ), Rect2( 386, 240, 16, 32 ), Rect2( 402, 240, 16, 32 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 6.18721, 9.94019 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 28.1293, 8.94785 )
 
 [node name="robot" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -45,12 +49,22 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 320, 240, 16, 32 )
+region_rect = Rect2( 354, 240, 16, 32 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 2 )
-anims/walk = SubResource( 3 )
+anims/idle = SubResource( 1 )
+anims/walk = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource( 1 )
+position = Vector2( -3.8147e-06, 4.41942 )
+shape = SubResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -0.280617, 3.08677 )
+shape = SubResource( 4 )
