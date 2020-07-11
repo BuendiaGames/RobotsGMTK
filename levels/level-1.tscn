@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://graphics/collidable.tres" type="TileSet" id=1]
 [ext_resource path="res://graphics/back.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://core/barrera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://core/monitor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://core/gancho.tscn" type="PackedScene" id=6]
+[ext_resource path="res://core/fadeout.tscn" type="PackedScene" id=7]
 
 [node name="level" type="Node2D"]
 
@@ -41,3 +42,5 @@ check_pos = 36
 
 [node name="monitor" parent="." instance=ExtResource( 5 )]
 position = Vector2( 84.4793, 148.872 )
+
+[node name="fadeout" parent="." instance=ExtResource( 7 )]

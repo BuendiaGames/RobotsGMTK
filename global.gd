@@ -1,7 +1,7 @@
 extends Node
 
 var current_scene = null
-var last_level = 2 #Number of levels
+var last_level = 3 #Number of levels
 
 
 func _ready():
@@ -10,8 +10,10 @@ func _ready():
 
 #Get the current level, and load next
 func load_next_level():
-	var level_index = int(current_scene.name[-1])
+	var level_index = int(get_tree().get_current_scene().filename[-6])
 	level_index += 1
+	print(current_scene.name)
+	print(level_index)
 	
 	if level_index > last_level:
 		pass #FINISH
