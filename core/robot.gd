@@ -67,8 +67,12 @@ func move_input(delta):
 	else:
 		vel.y = 0
 		
+	if Input.is_action_just_pressed("ui_accionA"):
+		print("pulso")
+	
 	if Input.is_action_just_pressed("ui_accionA") and currobj != null:
 			currobj.act()
+			print("llego")
 
 
 
@@ -109,8 +113,8 @@ func shuffle_input_map():
 #Shuffle input map and reinit the counter
 func _on_timeout():
 	$timer.wait_time = 30.0 + 10.0 * (2*randf()-1)
-	release_key()
-	shuffle_input_map() 
+	#release_key()
+	#shuffle_input_map() 
 
 #Reases the key that is actually pressed to avoid
 #confounding the input when the shuffle happens
@@ -123,7 +127,7 @@ func release_key():
 	
 # update the current object
 func _on_Area2D_area_entered(area):
-	if area.name == "monitor":
+	if "monitor" in area.name:
 		currobj = area
 	#pass # Replace with function body.
 
