@@ -33,9 +33,12 @@ func _ready():
 func _process(delta):
 	move_input(delta) #Make the movement
 	
-	move_and_slide(vel, Vector2(0,-1))
-
-#	pass
+	#Snap to avoid artifacts in platforms
+	var snap = Vector2(0, 32)
+	if on_air:
+		snap = Vector2(0,0)
+	
+	move_and_slide_with_snap(vel, snap, Vector2(0,-1))
 
 #This function accounts for the movement of the character
 func move_input(delta):
@@ -69,7 +72,7 @@ func move_input(delta):
 		vel.y = 0
 		
 	if Input.is_action_just_pressed("ui_accionA") and currobj != null:
-			currobj.act()
+		currobj.act()
 
 
 
@@ -110,8 +113,8 @@ func shuffle_input_map():
 #Shuffle input map and reinit the counter
 func _on_timeout():
 	$timer.wait_time = 30.0 + 10.0 * (2*randf()-1)
-	release_key()
-	shuffle_input_map() 
+	#release_key()
+	#shuffle_input_map() 
 
 #Reases the key that is actually pressed to avoid
 #confounding the input when the shuffle happens
@@ -126,6 +129,9 @@ func release_key():
 func _on_Area2D_area_entered(area):
 	if "monitor" in area.name:
 		currobj = area
+	elif "gancho" == area.name:
+		currobj = area
+	
 	#pass # Replace with function body.
 
 # update the current object

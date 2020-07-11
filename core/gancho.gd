@@ -1,6 +1,6 @@
 extends Area2D
 
-#tool
+tool
 
 export(int) var longitud = 1 setget alargar, getlength
 export(int) var check_pos = 16 setget setarea, getarea
@@ -40,28 +40,31 @@ func getarea():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	robot = get_tree().root.get_node("level/robot")
+	if not Engine.editor_hint:
+		robot = get_tree().root.get_node("level/robot")
 	set_process(false)
 
 
 #Start acting
 func act():
-	robot.set_process(false)
-	set_process(true)
+	if not Engine.editor_hint:
+		robot.set_process(false)
+		set_process(true)
 
 func _process(delta):
-	#Go up and down!
-	if going_down:
-		$sprites.position.y += delta * hook_speed
-		
-		#Enough going down, pick player and go up
-		if $sprites.position.y >= check_pos:
-			going_down = false
-			$sprites/gancho.region_rect.position.y += 16
-			$timer.start()
-	else:
-		$sprites.position.y -= delta * hook_speed
-		robot.position.y -= delta * hook_speed
+	if not Engine.editor_hint:
+		#Go up and down!
+		if going_down:
+			$sprites.position.y += delta * hook_speed
+			
+			#Enough going down, pick player and go up
+			if $sprites.position.y >= check_pos:
+				going_down = false
+				$sprites/gancho.region_rect.position.y += 16
+				$timer.start()
+		else:
+			$sprites.position.y -= delta * hook_speed
+			robot.position.y -= delta * hook_speed
 
 
 func _on_gancho_timeout():

@@ -35,6 +35,13 @@ func getdist():
 
 func setmode(new_value):
 	mode = new_value
+	
+	if mode == H:
+		endline = Vector2(distance, 0)
+	elif mode == V:
+		endline = Vector2(0, distance)
+	
+	
 	update()
 
 func getmode():
@@ -59,12 +66,13 @@ func _process(delta):
 			direction = +1
 	else:
 		vel.y = speed * direction
-		if direction == 1 and position.y >= startline.y + endline.x:
+		if direction == 1 and position.y >= startline.y + endline.y:
 			direction = -1
-		elif direction == -1 and position.y <= startline.x:
+		elif direction == -1 and position.y <= startline.y:
 			direction = +1
 	
-	move_and_collide(vel * delta)
+	#move_and_collide(vel)
+	position += vel * delta
 
 #Update a line in editor
 func _draw():

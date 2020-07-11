@@ -13,6 +13,7 @@ position = Vector2( 0, 16 )
 shape = SubResource( 1 )
 
 [node name="sprites" type="Node2D" parent="."]
+position = Vector2( 0, -2.84735 )
 
 [node name="gancho" type="Sprite" parent="sprites"]
 texture = ExtResource( 1 )
