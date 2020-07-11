@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://graphics/collidable.tres" type="TileSet" id=1]
 [ext_resource path="res://graphics/back.tres" type="TileSet" id=2]

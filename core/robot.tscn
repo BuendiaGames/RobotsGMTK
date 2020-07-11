@@ -70,3 +70,7 @@ position = Vector2( -0.280617, 3.08677 )
 shape = SubResource( 4 )
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
+
+[node name="timer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="timer" to="." method="_on_timeout"]
