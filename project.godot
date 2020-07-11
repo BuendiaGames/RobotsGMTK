@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="Robots"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://global.gd"
+
 [input]
 
 ui_left={
