@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://graphics/robots.png" type="Texture" id=1]
+[ext_resource path="res://core/barrera.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3.12449, 7.98797 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "azul"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 48, 128, 16, 16 ), Rect2( 64, 128, 16, 16 ), Rect2( 80, 128, 16, 16 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "roja"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 128, 16, 16 ), Rect2( 16, 128, 16, 16 ), Rect2( 32, 128, 16, 16 ) ]
+}
+
+[node name="barrera" type="StaticBody2D"]
+collision_layer = 2147483649
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.655518, 0.0936451 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 80, 128, 16, 16 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/azul = SubResource( 3 )
+anims/roja = SubResource( 2 )

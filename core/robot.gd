@@ -6,6 +6,7 @@ const jump_speed = 40.0
 
 var vel = Vector2(0.0, 0.0)
 var on_air
+var currobj = null #object which you are interacting with
 
 var anim = ""
 
@@ -56,6 +57,9 @@ func move_input(delta):
 		vel.y += delta*g
 	else:
 		vel.y = 0
+		
+	if Input.is_action_just_pressed("ui_accionA") and currobj != null:
+			currobj.act()
 
 func set_anim(new_anim):
 	if (new_anim != anim):
@@ -64,3 +68,15 @@ func set_anim(new_anim):
 	
 
 
+
+
+# update the current object
+func _on_Area2D_area_entered(area):
+	if area.name == "monitor":
+		currobj = area
+	#pass # Replace with function body.
+
+# update the current object
+func _on_Area2D_area_exited(area):
+	currobj = null
+	pass # Replace with function body.
