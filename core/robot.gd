@@ -22,8 +22,8 @@ var current_action = "idle"
 func _ready():
 	randomize()
 	
+	#Store the default inputs we use
 	store_default_inputs()
-	
 	set_process(true)
 
 
@@ -34,7 +34,6 @@ func _process(delta):
 	
 	move_and_slide(vel, Vector2(0,-1))
 
-#	pass
 
 #This function accounts for the movement of the character
 func move_input(delta):
@@ -123,12 +122,13 @@ func release_key():
 	
 # update the current object
 func _on_Area2D_area_entered(area):
-	if area.name == "monitor":
+	
+	if area.name == "monitor" or area.name == "gancho":
 		currobj = area
-	#pass # Replace with function body.
+	
 
 # update the current object
 func _on_Area2D_area_exited(area):
 	currobj = null
-	pass # Replace with function body.
+
 

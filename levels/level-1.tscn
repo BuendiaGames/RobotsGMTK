@@ -1,14 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://graphics/collidable.tres" type="TileSet" id=1]
 [ext_resource path="res://graphics/back.tres" type="TileSet" id=2]
 [ext_resource path="res://core/robot.tscn" type="PackedScene" id=3]
 [ext_resource path="res://core/barrera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://core/monitor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://core/plataforma.tscn" type="PackedScene" id=6]
-[ext_resource path="res://core/robotnpc.tscn" type="PackedScene" id=7]
+[ext_resource path="res://core/gancho.tscn" type="PackedScene" id=6]
+[ext_resource path="res://core/fadeout.tscn" type="PackedScene" id=7]
 
-[node name="Node2D" type="Node2D"]
+[node name="level" type="Node2D"]
 
 [node name="deco-back" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -35,13 +35,14 @@ color = 1
 position = Vector2( 0, -15.7668 )
 color = 1
 
+[node name="gancho" parent="." instance=ExtResource( 6 )]
+position = Vector2( 16.5204, 112.061 )
+longitud = 3
+check_pos = 36
+
 [node name="monitor" parent="." instance=ExtResource( 5 )]
 position = Vector2( 84.4793, 148.872 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 6 )]
-position = Vector2( 50.2581, 55.7016 )
+position = Vector2( 94.5953, 122.488 )
 distance = 150
-
-[node name="robotnpc" parent="." instance=ExtResource( 7 )]
-position = Vector2( 235.155, 140.308 )
-distance = 30

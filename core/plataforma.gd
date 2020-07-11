@@ -27,8 +27,6 @@ func setdist(new_value):
 		endline = Vector2(distance, 0)
 	elif mode == V:
 		endline = Vector2(0, distance)
-		
-	print(position, endline)
 	
 	update()
 
