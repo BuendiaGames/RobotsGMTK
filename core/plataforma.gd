@@ -24,10 +24,12 @@ func setdist(new_value):
 	distance = new_value
 	
 	if mode == H:
-		endline = Vector2(distance, 0) + position
+		endline = Vector2(distance, 0)
 	elif mode == V:
-		endline = Vector2(0, distance) + position
-
+		endline = Vector2(0, distance)
+		
+	print(position, endline)
+	
 	update()
 
 func getdist():
@@ -50,24 +52,26 @@ func _ready():
 
 #Move the platform when in-game
 func _process(delta):
+	
 	if mode == H:
 		vel.x = speed * direction
-		if direction == 1 and position.x >= endline:
+		if direction == 1 and position.x >= endline.x:
 			direction = -1
-		elif direction == -1 and position.x <= startline:
+		elif direction == -1 and position.x <= startline.x:
 			direction = +1
 	else:
 		vel.y = speed * direction
-		if direction == 1 and position.y >= endline:
+		if direction == 1 and position.y >= endline.x:
 			direction = -1
-		elif direction == -1 and position.y <= startline:
+		elif direction == -1 and position.y <= startline.x:
 			direction = +1
-
+	
+	move_and_collide(vel * delta)
 
 #Update a line in editor
 func _draw():
 	if Engine.editor_hint:
-		draw_line(position, endline, Color(1.0,0.0,0.0), 1.5)
+		draw_line(Vector2(0,0), endline, Color(1.0,0.0,0.0), 1.5)
 
 
 
