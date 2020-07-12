@@ -72,6 +72,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Label4" type="Label" parent="."]
+margin_left = 44.8538
+margin_top = 163.637
+margin_right = 984.854
+margin_bottom = 392.637
+custom_fonts/font = SubResource( 1 )
+text = "CONTROLS
+Use the direction arrows to move and
+key s to interact with pcs and hooks
+At least at the beginning, later who knows..."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label3" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0.5 )
 margin_left = 325.133
@@ -90,7 +105,8 @@ anims/decoration = SubResource( 2 )
 anims/start = SubResource( 3 )
 
 [node name="robotnpc" parent="." instance=ExtResource( 3 )]
-position = Vector2( -83.3366, 401.029 )
+position = Vector2( -74.3569, 421.233 )
+scale = Vector2( 3, 3 )
 distance = 2200
 
 [node name="fadeout" parent="." instance=ExtResource( 4 )]

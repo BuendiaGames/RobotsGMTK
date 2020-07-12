@@ -12,7 +12,8 @@ func _ready():
 #Reload current level, in case of death
 func retry_level():
 	print(current_scene.filename)
-	goto_scene(current_scene.filename)
+	#goto_scene(current_scene.filename)
+	goto_scene("res://core/creditos.tscn")
 	
 func start():
 	print(current_scene.filename)

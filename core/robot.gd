@@ -10,10 +10,11 @@ var currobj = null #object which you are interacting with
 
 var anim = ""
 
-const tau = 30.0 #Average time to change, in seconds
+const tau = 50.0 #Average time to change, in seconds
+const tau_rnd = 10.0
 
 #To make all input changes, these are available actions
-const actions = ["right", "left", "up", "down", "accionA", "accionB", "accionC"]
+const actions = ["right", "left", "up", "down", "accionA"]
 var default_inputs = {}
 var current_action = "idle"
 
@@ -34,7 +35,7 @@ func _process(delta):
 	move_input(delta) #Make the movement
 	
 	#Snap to avoid artifacts in platforms
-	var snap = Vector2(0, 32)
+	var snap = Vector2(0, 16)
 	if on_air:
 		snap = Vector2(0,0)
 	
@@ -112,10 +113,11 @@ func shuffle_input_map():
 
 #Shuffle input map and reinit the counter
 func _on_timeout():
-	$timer.wait_time = 30.0 + 10.0 * (2*randf()-1)
-	#release_key()
-	#shuffle_input_map() 
-
+	$timer.wait_time = tau + tau_rnd * (2*randf()-1)
+	release_key()
+	shuffle_input_map() 
+	# aqui
+	
 #Reases the key that is actually pressed to avoid
 #confounding the input when the shuffle happens
 func release_key():

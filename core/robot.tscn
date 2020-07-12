@@ -41,7 +41,7 @@ tracks/0/keys = {
 extents = Vector2( 6.18721, 9.94019 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 8.48039, 8.94785 )
+extents = Vector2( 8.30362, 9.84072 )
 
 [node name="robot" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -56,6 +56,7 @@ anims/idle = SubResource( 1 )
 anims/walk = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( -3.8147e-06, 4.41942 )
 shape = SubResource( 3 )
 
@@ -66,10 +67,11 @@ zoom = Vector2( 0.5, 0.5 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -0.280617, 3.08677 )
+position = Vector2( 0.0729291, 5.38487 )
 shape = SubResource( 4 )
 
 [node name="timer" type="Timer" parent="."]
+wait_time = 25.0
 autostart = true
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
