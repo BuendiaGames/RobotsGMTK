@@ -44,3 +44,4 @@ __meta__ = {
 [node name="anim" type="AnimationPlayer" parent="."]
 anims/fade-in = SubResource( 1 )
 anims/fade-out = SubResource( 2 )
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_finished"]

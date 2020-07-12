@@ -13,6 +13,10 @@ func _ready():
 func retry_level():
 	print(current_scene.filename)
 	goto_scene(current_scene.filename)
+	
+func start():
+	print(current_scene.filename)
+	goto_scene("res://levels/level-2.tscn")
 
 
 #Get the current level, and load next

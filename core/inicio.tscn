@@ -1,0 +1,96 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://graphics/Robot_Font.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://core/inicio.gd" type="Script" id=2]
+[ext_resource path="res://core/robotnpc.tscn" type="PackedScene" id=3]
+[ext_resource path="res://core/fadeout.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 56
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "decoration"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("robotnpc:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -83.3366, 401.029 ), Vector2( 1100, 401.029 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "start"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="inicio" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 305.655
+margin_top = 37.4577
+margin_right = 744.655
+margin_bottom = 92.4577
+custom_fonts/font = SubResource( 1 )
+text = "CONTROL ROBOTS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 44.8538
+margin_top = 163.637
+margin_right = 984.854
+margin_bottom = 392.637
+custom_fonts/font = SubResource( 1 )
+text = "Control Enterprises robots are
+reporting a bug... Employees say that some
+are starting to be conscious and run away
+"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0.5 )
+margin_left = 325.133
+margin_top = 459.98
+margin_right = 687.133
+margin_bottom = 514.98
+custom_fonts/font = SubResource( 1 )
+text = "Press S to start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "start"
+anims/decoration = SubResource( 2 )
+anims/start = SubResource( 3 )
+
+[node name="robotnpc" parent="." instance=ExtResource( 3 )]
+position = Vector2( -83.3366, 401.029 )
+distance = 2200
+
+[node name="fadeout" parent="." instance=ExtResource( 4 )]

@@ -19,3 +19,7 @@ func fadein():
 func fadeout():
 	reposition()
 	$anim.play("fade-out")
+
+
+func _on_anim_finished(anim_name):
+	hide()
