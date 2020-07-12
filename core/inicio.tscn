@@ -73,15 +73,14 @@ __meta__ = {
 }
 
 [node name="Label4" type="Label" parent="."]
-margin_left = 42.8538
-margin_top = 127.637
-margin_right = 993.854
-margin_bottom = 414.637
+margin_left = 44.8538
+margin_top = 163.637
+margin_right = 984.854
+margin_bottom = 392.637
 custom_fonts/font = SubResource( 1 )
 text = "CONTROLS
 Use the direction arrows to move and
-the S key to interact with PCs and hooks.
-Down arrow only makes sounds.
+key s to interact with pcs and hooks
 At least at the beginning, later who knows..."
 align = 1
 __meta__ = {
@@ -90,10 +89,10 @@ __meta__ = {
 
 [node name="Label3" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0.5 )
-margin_left = 354.497
-margin_top = 519.252
-margin_right = 716.497
-margin_bottom = 574.252
+margin_left = 325.133
+margin_top = 459.98
+margin_right = 687.133
+margin_bottom = 514.98
 custom_fonts/font = SubResource( 1 )
 text = "Press S to start"
 __meta__ = {
@@ -106,7 +105,7 @@ anims/decoration = SubResource( 2 )
 anims/start = SubResource( 3 )
 
 [node name="robotnpc" parent="." instance=ExtResource( 3 )]
-position = Vector2( -50.4936, 448.96 )
+position = Vector2( -74.3569, 421.233 )
 scale = Vector2( 3, 3 )
 distance = 2200
 

@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Robots"
 run/main_scene="res://core/inicio.tscn"
-config/icon="res://icon.png"
+config/icon="res://icon2.png"
 
 [autoload]
 
@@ -60,7 +60,6 @@ ui_accionA={
 [rendering]
 
 quality/driver/driver_name="GLES2"
-quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0.0745098, 0.0705882, 0.0823529, 1 )

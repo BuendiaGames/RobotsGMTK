@@ -158,6 +158,10 @@ __meta__ = {
 }
 
 [node name="fadeout" parent="." instance=ExtResource( 8 )]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 511.843, 300.82 )
+current = true
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_Button2_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_Button3_pressed"]

@@ -51,7 +51,7 @@ mode = 1
 
 [node name="gancho" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1348.58, 158.361 )
-longitud = 10
+longitud = 15
 check_pos = 80
 
 [node name="barrera" parent="." instance=ExtResource( 1 )]
