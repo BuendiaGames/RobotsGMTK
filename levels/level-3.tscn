@@ -36,7 +36,7 @@ __meta__ = {
 position = Vector2( -36.5578, 255.553 )
 
 [node name="platform" parent="." instance=ExtResource( 1 )]
-position = Vector2( -16.8557, 328.099 )
+position = Vector2( -16.1478, 321.964 )
 collision/safe_margin = 0.03
 distance = 700
 
@@ -56,8 +56,6 @@ mode = 1
 position = Vector2( 1179.63, 184.789 )
 longitud = 10
 check_pos = 30
-
-[node name="fadeout" parent="." instance=ExtResource( 2 )]
 
 [node name="barrera" parent="." instance=ExtResource( 6 )]
 position = Vector2( 306.739, 392.551 )
@@ -378,3 +376,5 @@ color = 1
 
 [node name="luz3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1016.21, 191.917 )
+
+[node name="fadeout" parent="." instance=ExtResource( 2 )]

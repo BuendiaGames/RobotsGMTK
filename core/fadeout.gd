@@ -8,8 +8,8 @@ func _ready():
 #Position this to get the entire screen
 func reposition():
 	var view = get_viewport_rect().size
-	rect_position = -0.5 * view
-	rect_size = view
+	rect_position = - 0.5 *view
+	rect_size = 2*view
 	show()
 
 func fadein():

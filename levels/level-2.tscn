@@ -54,8 +54,6 @@ position = Vector2( 1348.58, 158.361 )
 longitud = 10
 check_pos = 80
 
-[node name="fadeout" parent="." instance=ExtResource( 8 )]
-
 [node name="barrera" parent="." instance=ExtResource( 1 )]
 position = Vector2( 661.403, -13.9116 )
 
@@ -214,3 +212,5 @@ rotation = 1.5708
 
 [node name="luz3" parent="." instance=ExtResource( 10 )]
 position = Vector2( 599.718, 26.4669 )
+
+[node name="fadeout" parent="." instance=ExtResource( 8 )]
