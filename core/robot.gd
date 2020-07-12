@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-const g = 20.0
-const speed = 50.0
-const jump_speed = 40.0
+const g = 20.0 * 14
+const speed = 70.0 
+const jump_speed = 40.0 * 3.742
 
 var vel = Vector2(0.0, 0.0)
 var on_air
@@ -137,11 +137,11 @@ func _on_Area2D_area_entered(area):
 # update the current object
 func _on_Area2D_area_exited(area):
 	currobj = null
-	pass # Replace with function body.
 
 
-
+#If collides with enemy, it's dead
 func _on_Area2D_body_entered(body):
 	if "npc" in body.name:
-		print("muerto")
-	pass # Replace with function body.
+		get_node("../fadeout").fadeout()
+		global.retry_level()
+

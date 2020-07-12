@@ -8,15 +8,20 @@ func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child( root.get_child_count() -1 )
 
+
+#Reload current level, in case of death
+func retry_level():
+	print(current_scene.filename)
+	goto_scene(current_scene.filename)
+
+
 #Get the current level, and load next
 func load_next_level():
-	var level_index = int(get_tree().get_current_scene().filename[-6])
+	var level_index = int(current_scene.filename[-6])
 	level_index += 1
-	print(current_scene.name)
-	print(level_index)
 	
 	if level_index > last_level:
-		pass #FINISH
+		goto_scene("res://core/creditos.tscn")
 	else:
 		goto_scene("res://levels/level-" + str(level_index) + ".tscn")
 

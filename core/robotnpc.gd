@@ -17,8 +17,8 @@ var direction = 1
 func setdist(new_value):
 	distance = new_value
 	
-	endline = Vector2(distance, 0)
-	print(position, endline)
+	startline = Vector2(-0.5*distance, 0)
+	endline = Vector2(0.5*distance, 0)
 	
 	update()
 
@@ -27,7 +27,9 @@ func getdist():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	startline = position
+	startline += position
+	endline += position
+	
 	$AnimationPlayer.play("walk")
 	set_process(not Engine.editor_hint)
 
@@ -35,12 +37,22 @@ func _ready():
 func _process(delta):
 	
 	vel.x = speed * direction
-	if direction == 1 and position.x >=  startline.x + endline.x:
+	if direction == 1 and position.x >= endline.x:
 		direction = -1
 		$Sprite.flip_h = true
 	elif direction == -1 and position.x <= startline.x:
 		direction = +1
 		$Sprite.flip_h = false
+	
+	#Flip direction also on wall collision
+	for i in get_slide_count():
+		var col = get_slide_collision(i)
+		if col.normal.distance_squared_to(Vector2(1,0)) < 0.5:
+			direction = +1
+			$Sprite.flip_h = false
+		elif col.normal.distance_squared_to(Vector2(-1,0)) < 0.5:
+			direction = -1
+			$Sprite.flip_h = true
 	
 	move_and_slide(vel)
 

@@ -10,6 +10,7 @@ func reposition():
 	var view = get_viewport_rect().size
 	rect_position = -0.5 * view
 	rect_size = view
+	show()
 
 func fadein():
 	reposition()
