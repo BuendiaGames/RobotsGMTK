@@ -116,9 +116,9 @@ margin_right = 1529.77
 margin_bottom = 724.863
 rect_scale = Vector2( 0.25, 0.25 )
 custom_fonts/font = SubResource( 1 )
-text = "Programmers:  Victor and Ana
-Music:          Victor
-Art             0x72 Robert
+text = "Programmers  Victor7 and Mapachana    -BuendiaGames
+Music           Victor7                       -BuendiaGames
+Art              0x72                         -CC0 graphics from itchio
 "
 __meta__ = {
 "_edit_use_anchors_": false
