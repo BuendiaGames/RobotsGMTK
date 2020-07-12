@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://core/robot.gd" type="Script" id=1]
 [ext_resource path="res://graphics/robots.png" type="Texture" id=2]
+[ext_resource path="res://music/sfx_robot.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -40,8 +41,37 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 6.18721, 9.94019 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 8.30362, 9.84072 )
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+void fragment() {
+	vec3 c = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgb;
+	c = vec3(1.0) - c;
+	COLOR.rgb = c;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+
+[sub_resource type="Animation" id=9]
+resource_name = "changecontrol"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
 
 [node name="robot" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -49,7 +79,7 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 242, 240, 16, 32 )
+region_rect = Rect2( 210, 240, 16, 32 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 1 )
@@ -68,11 +98,27 @@ zoom = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0.0729291, 5.38487 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="timer" type="Timer" parent="."]
-wait_time = 25.0
+wait_time = 15.0
 autostart = true
+
+[node name="sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = 3.0
+
+[node name="canvas" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 8 )
+margin_right = 100.0
+margin_bottom = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="canvasanim" type="AnimationPlayer" parent="canvas"]
+anims/changecontrol = SubResource( 9 )
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

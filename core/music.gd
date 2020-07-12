@@ -2,26 +2,30 @@ extends Node
 
 var music_player = AudioStreamPlayer.new()
 
-var last_rained = false
+var in_menu = true
 
-#var rain_music = preload("res://music/back/spooky_8d.ogg")
-#var no_rain_music = preload("res://music/back/spooky_8d_no_rain.ogg")
+var menumusic = preload("res://music/GMTK2020_drums.ogg")
+var gamemusic = preload("res://music/GMTK2020_full.ogg")
 
 func _ready():
-	pause_mode = Node.PAUSE_MODE_PROCESS
+	music_player.volume_db = -5
+	music_player.stream = menumusic
+	music_player.play()
 	add_child(music_player)
 
-#Changes music when rain changes
-func check_music(is_raining):
-	if last_rained and not is_raining:
-		var playingpos = music_player.get_playback_position()
-		music_player.stop()
-#		music_player.stream = no_rain_music
-		music_player.play(playingpos)
-	elif not last_rained and is_raining:
-		var playingpos = music_player.get_playback_position()
-		music_player.stop()
-#		music_player.stream = rain_music
-		music_player.play(playingpos)
+func change_music():
+	var playingpos = 0.0
+	music_player.stop()
 	
-	last_rained = is_raining
+	#If it's in menu, select the other music
+	#and start playing it
+	if in_menu:
+		#Here, continue where we left it
+		playingpos = music_player.get_playback_position()
+		music_player.stream = gamemusic
+	else:
+		#From the beginning
+		music_player.stream = menumusic
+	
+	in_menu = not in_menu
+	music_player.play(playingpos)

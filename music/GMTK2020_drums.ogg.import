@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GMTK2020_drums.ogg-155b17cb92f61b134f40fbe3e07a9bd4.oggstr"
+
+[deps]
+
+source_file="res://music/GMTK2020_drums.ogg"
+dest_files=[ "res://.import/GMTK2020_drums.ogg-155b17cb92f61b134f40fbe3e07a9bd4.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

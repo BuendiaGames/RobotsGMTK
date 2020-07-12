@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GMTK2020_full.ogg-2759fa97d1b2e6e4807c9fd3996e9a78.oggstr"
+
+[deps]
+
+source_file="res://music/GMTK2020_full.ogg"
+dest_files=[ "res://.import/GMTK2020_full.ogg-2759fa97d1b2e6e4807c9fd3996e9a78.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

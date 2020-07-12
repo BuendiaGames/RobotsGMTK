@@ -61,6 +61,7 @@ func _process(delta):
 			if $sprites.position.y >= check_pos:
 				going_down = false
 				$sprites/gancho.region_rect.position.y += 16
+				$sfx.play()
 				$timer.start()
 		else:
 			$sprites.position.y -= delta * hook_speed

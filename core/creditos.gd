@@ -19,16 +19,13 @@ func _ready():
 func _on_Button_pressed():
 	$fadeout.fadeout()
 	global.start()
-	print("hago")
-	pass # Replace with function body.
 
 # play level 2
 func _on_Button2_pressed():
 	$fadeout.fadeout()
 	global.goto_scene("res://levels/level-3.tscn")
-	pass # Replace with function body.
 
 
 func _on_Button3_pressed():
 	get_tree().quit()
-	pass # Replace with function body.
+

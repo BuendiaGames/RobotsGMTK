@@ -26,6 +26,13 @@ func _ready():
 	#Store the default inputs we use
 	store_default_inputs()
 	
+	
+	#Make the canvas occupy all screen
+	var view = get_viewport_rect().size
+	
+	$canvas.rect_position = -0.5*view
+	$canvas.rect_size = 2*view
+	
 	set_process(true)
 
 
@@ -35,7 +42,7 @@ func _process(delta):
 	move_input(delta) #Make the movement
 	
 	#Snap to avoid artifacts in platforms
-	var snap = Vector2(0, 16)
+	var snap = Vector2(0, 10)
 	if on_air:
 		snap = Vector2(0,0)
 	
@@ -61,6 +68,10 @@ func move_input(delta):
 		$Sprite.flip_h = true
 		vel.x = -speed
 		current_action = "ui_left"
+	elif Input.is_action_pressed("ui_down"):
+		if not $sfx.playing:
+			$sfx.pitch_scale = 1.0 + 0.5 * randf()
+			$sfx.play()
 	else:
 		set_anim("idle")
 		current_action = "idle"
@@ -115,6 +126,7 @@ func shuffle_input_map():
 func _on_timeout():
 	$timer.wait_time = tau + tau_rnd * (2*randf()-1)
 	release_key()
+	$canvas/canvasanim.play("changecontrol")
 	shuffle_input_map() 
 	# aqui
 	

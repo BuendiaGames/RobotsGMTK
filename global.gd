@@ -11,12 +11,11 @@ func _ready():
 
 #Reload current level, in case of death
 func retry_level():
-	print(current_scene.filename)
-	#goto_scene(current_scene.filename)
+	music.change_music()
 	goto_scene("res://core/creditos.tscn")
 	
 func start():
-	print(current_scene.filename)
+	music.change_music()
 	goto_scene("res://levels/level-2.tscn")
 
 
@@ -26,6 +25,7 @@ func load_next_level():
 	level_index += 1
 	
 	if level_index > last_level:
+		music.change_music()
 		goto_scene("res://core/creditos.tscn")
 	else:
 		goto_scene("res://levels/level-" + str(level_index) + ".tscn")
